@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D43EC832A78878900E88D0E /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D43EC822A78878900E88D0E /* SearchView.swift */; };
 		3D598FB32A732CED0048AD7B /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D598FB22A732CED0048AD7B /* MainPage.swift */; };
 		3D598FB82A73A78B0048AD7B /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D598FB72A73A78B0048AD7B /* Home.swift */; };
 		3D598FBD2A73B0260048AD7B /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D598FBC2A73B0260048AD7B /* Product.swift */; };
@@ -20,9 +21,12 @@
 		3D9A63892A7244D1004B01BE /* LoginPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9A63882A7244D1004B01BE /* LoginPageModel.swift */; };
 		3D9A638B2A72472F004B01BE /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9A638A2A72472F004B01BE /* LoginPage.swift */; };
 		3D9A638D2A72492A004B01BE /* CustomeCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9A638C2A72492A004B01BE /* CustomeCorners.swift */; };
+		3DB117132A79CA7400888BFC /* StaggeredGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB117122A79CA7400888BFC /* StaggeredGrid.swift */; };
+		3DB117152A7B221E00888BFC /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB117142A7B221E00888BFC /* ProfilePage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D43EC822A78878900E88D0E /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		3D598FB22A732CED0048AD7B /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
 		3D598FB72A73A78B0048AD7B /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		3D598FBC2A73B0260048AD7B /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -56,6 +60,8 @@
 		3D9A63882A7244D1004B01BE /* LoginPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageModel.swift; sourceTree = "<group>"; };
 		3D9A638A2A72472F004B01BE /* LoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
 		3D9A638C2A72492A004B01BE /* CustomeCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomeCorners.swift; sourceTree = "<group>"; };
+		3DB117122A79CA7400888BFC /* StaggeredGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaggeredGrid.swift; sourceTree = "<group>"; };
+		3DB117142A7B221E00888BFC /* ProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +79,8 @@
 			isa = PBXGroup;
 			children = (
 				3D598FB72A73A78B0048AD7B /* Home.swift */,
+				3DB117122A79CA7400888BFC /* StaggeredGrid.swift */,
+				3DB117142A7B221E00888BFC /* ProfilePage.swift */,
 			);
 			path = TabViews;
 			sourceTree = "<group>";
@@ -159,6 +167,7 @@
 				3D9A638C2A72492A004B01BE /* CustomeCorners.swift */,
 				3D598FB22A732CED0048AD7B /* MainPage.swift */,
 				3D598FC02A7459C90048AD7B /* MoreProductsView.swift */,
+				3D43EC822A78878900E88D0E /* SearchView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -245,11 +254,14 @@
 				3D9A63652A71ADC0004B01BE /* ContentView.swift in Sources */,
 				3D598FC12A7459C90048AD7B /* MoreProductsView.swift in Sources */,
 				3D9A63862A71D803004B01BE /* OnBoardingPage.swift in Sources */,
+				3DB117132A79CA7400888BFC /* StaggeredGrid.swift in Sources */,
 				3D598FBD2A73B0260048AD7B /* Product.swift in Sources */,
+				3D43EC832A78878900E88D0E /* SearchView.swift in Sources */,
 				3D598FBF2A73B3310048AD7B /* HomeViewModel.swift in Sources */,
 				3D9A63892A7244D1004B01BE /* LoginPageModel.swift in Sources */,
 				3D9A638D2A72492A004B01BE /* CustomeCorners.swift in Sources */,
 				3D9A638B2A72472F004B01BE /* LoginPage.swift in Sources */,
+				3DB117152A7B221E00888BFC /* ProfilePage.swift in Sources */,
 				3D598FB32A732CED0048AD7B /* MainPage.swift in Sources */,
 				3D598FB82A73A78B0048AD7B /* Home.swift in Sources */,
 				3D9A63632A71ADC0004B01BE /* EcommerceAppkitApp.swift in Sources */,

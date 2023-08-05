@@ -9,27 +9,33 @@ import SwiftUI
 
 struct Home: View {
     let customFont = "Raleway-Regular"
+    @Namespace var animation
     @StateObject var homeData: HomeViewModel = HomeViewModel()
     var body: some View {
         
         ScrollView(.vertical, showsIndicators: false){
             
             VStack(spacing: 15){
-                HStack(spacing: 15){
-                    Image(systemName: "magnifyingglass")
-                        .font(.title2)
-                        .foregroundColor(.gray)
-                    TextField("Search", text: .constant(""))
-                        .disabled(true)
+                
+                //Seach Bar
+                ZStack{
+                    
+                    if homeData.searchActivated{
+                        searchBar()
+                    }else{
+                        searchBar()
+                            .matchedGeometryEffect(id: "SEARCHBAR", in: animation)
+                    }
+                    
                 }
-                .padding(.vertical, 12)
-                .padding(.horizontal)
-                .background(
-                Capsule()
-                    .strokeBorder(Color.gray, lineWidth: 0.8)
-                )
                 .frame(width: getRect().width / 1.6 )
                 .padding(.horizontal, 25)
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    withAnimation(.easeInOut){
+                        homeData.searchActivated =  true
+                    }
+                }
                 
                 Text("Order online\ncollect in store")
                     .font(.custom(customFont, size: 28).bold())
@@ -87,7 +93,7 @@ struct Home: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.quaternary)
         .onChange(of: homeData.productType){ newValue in
-            homeData.filterProductType()
+            homeData.filterProductByType()
         }
         // Preview Issue
         
@@ -96,6 +102,34 @@ struct Home: View {
         } content: {
             MoreProductsView()
         }
+        
+        // Displaying Search View
+        .overlay(
+            ZStack{
+                if  homeData.searchActivated{
+//                    SearchView(animation: animation)
+//                        .environmentObject(homeData)
+                }
+            }
+        )
+    }
+    
+    //adding matched geometry effect
+    @ViewBuilder
+    func searchBar()->some View{
+        HStack(spacing: 15){
+            Image(systemName: "magnifyingglass")
+                .font(.title2)
+                .foregroundColor(.gray)
+            TextField("Search", text: .constant(""))
+                .disabled(true)
+        }
+        .padding(.vertical, 12)
+        .padding(.horizontal)
+        .background(
+        Capsule()
+            .strokeBorder(Color.gray, lineWidth: 0.8)
+        )
     }
     
     @ViewBuilder

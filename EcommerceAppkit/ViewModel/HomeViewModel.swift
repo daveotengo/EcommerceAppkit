@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+//Using Combine to monitor search field and if user leaves for .5 seconds then starts searching
+//to avoid memory issues
+import Combine
+
 class HomeViewModel: ObservableObject {
     
     @Published var productType: ProductType = .Wearable
@@ -69,11 +73,28 @@ class HomeViewModel: ObservableObject {
     
     @Published var showMoreProductsOnType: Bool = false
     
+    @Published var searchText: String = ""
+    @Published var searchActivated: Bool = false
+    @Published var searchedProducts: [Product]?
+    
+    var searchCancellable: AnyCancellable?
+    
     init(){
-        filterProductType()
+        filterProductByType()
+        
+        searchCancellable = $searchText.removeDuplicates()
+            .debounce(for: 0.5, scheduler: RunLoop.main)
+            .sink(receiveValue: {str in
+                if str != ""{
+                    self.filterProductBySearch()
+                }else{
+                    self.searchedProducts = nil
+                }
+                
+            })
     }
     
-    func filterProductType(){
+    func filterProductByType(){
         DispatchQueue.global(qos: .userInteractive).async {
             let result = self.products
                 .lazy
@@ -83,6 +104,26 @@ class HomeViewModel: ObservableObject {
                 .prefix(4)
             DispatchQueue.main.async {
                 self.filterProducts = result.compactMap({ product in
+                    
+                    return product
+                    
+                })
+            }
+        }
+    }
+    
+    
+    func filterProductBySearch(){
+        DispatchQueue.global(qos: .userInteractive).async {
+            let result = self.products
+                .lazy
+                .filter{product  in
+                    return product.title.lowercased().contains(self.searchText.lowercased())
+                }
+            
+            
+            DispatchQueue.main.async {
+                self.searchedProducts = result.compactMap({ product in
                     
                     return product
                     
