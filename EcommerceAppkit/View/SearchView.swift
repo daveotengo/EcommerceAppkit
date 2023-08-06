@@ -127,7 +127,7 @@ struct SearchView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity,alignment: .top)
         .background(
-            Color(.quaternaryLabel)
+            Color(.white)
                 .ignoresSafeArea()
         )
         .onAppear{
