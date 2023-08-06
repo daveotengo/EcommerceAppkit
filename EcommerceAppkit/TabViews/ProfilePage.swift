@@ -41,8 +41,10 @@ struct ProfilePage: View {
                             .font(.custom(customFont, size: 15))
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
+                        
                     
                   }
+                    
                     .padding([.horizontal, .bottom])
                     .background(
                         Color.white
@@ -51,6 +53,8 @@ struct ProfilePage: View {
                     )
                     .padding()
                     .padding(.top,40)
+                    .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 4) // Add a shadow for a raised effect
+
                     
                     // Custom Navigation Links
                     CustomNavigationLink(title:"Edit Profile"){
@@ -59,6 +63,7 @@ struct ProfilePage: View {
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .background(Color.white).ignoresSafeArea()
                     }
+                    
                     
                     CustomNavigationLink(title:"Shopping Address"){
                         Text("")
@@ -100,7 +105,7 @@ struct ProfilePage: View {
             .navigationBarHidden(true)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(
-                Color(.quaternaryLabel)
+                Color(.white)
             
             )
         }
@@ -132,8 +137,11 @@ struct ProfilePage: View {
             .padding(.top,10)
             
         }
+        .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 4) // Add a shadow for a raised effect
+
      
     }
+    
     
 }
 

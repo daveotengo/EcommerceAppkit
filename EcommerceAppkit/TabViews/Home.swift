@@ -19,7 +19,7 @@ struct Home: View {
                 
                 //Seach Bar
                 ZStack{
-                    
+
                     if homeData.searchActivated{
                         searchBar()
                     }else{
@@ -61,8 +61,10 @@ struct Home: View {
                         ForEach(homeData.filterProducts){product in
                             // Procuct Card View
                             ProductCardView(product: product)
+                               
                         }
                     }
+                    
                     .padding(.horizontal, 25)
                     .padding(.bottom)
                     .padding(.top, 80)
@@ -91,27 +93,30 @@ struct Home: View {
             .padding(.vertical)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.quaternary)
+       
+
         .onChange(of: homeData.productType){ newValue in
             homeData.filterProductByType()
         }
         // Preview Issue
-        
         .sheet(isPresented: $homeData.showMoreProductsOnType){
             
         } content: {
             MoreProductsView()
         }
-        
-        // Displaying Search View
         .overlay(
             ZStack{
                 if  homeData.searchActivated{
-//                    SearchView(animation: animation)
-//                        .environmentObject(homeData)
+                    SearchView()
+                        .environmentObject(homeData)
                 }
             }
+                .background(Color.white)
+
         )
+        
+        // Displaying Search View
+        
     }
     
     //adding matched geometry effect
@@ -138,7 +143,7 @@ struct Home: View {
             Image(product.productImage)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: getRect().width / 2.5, height: getRect().width / 2.5)
+                .frame(width: getRect().width / 3.5, height: getRect().width / 3.5)
             //moving image to the top
                 .offset(y: -20)
                 .padding(.bottom, -80)
@@ -159,13 +164,16 @@ struct Home: View {
                 .padding(.top, 5)
                
         }
-        .padding(.horizontal,20)
-        .padding(.bottom, 22)
+        .padding(.horizontal,30)
+        .padding(.bottom, 32)
+        .padding()
         .background(
-            Color.white
-                .cornerRadius(25)
-        )
+               Color.white
+                   .cornerRadius(25)
+                   .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 4) // Add a shadow for a raised effect
+           )
     }
+    
     
     @ViewBuilder
     func ProductTypeView(type: ProductType)-> some View {

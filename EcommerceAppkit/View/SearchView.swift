@@ -102,10 +102,15 @@ struct SearchView: View {
                             StaggeredGrid( spacing: 20,columns: 2, list: products) { product in
                             
                             //Card View ..
-                            ProductCardView(product: product)
-
+                              
+                                    ProductCardView(product: product)
+                                    //.padding()
+                                    
                             
                             }
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .padding()
+
                             
                         }
                         .padding()
@@ -134,19 +139,19 @@ struct SearchView: View {
     
     @ViewBuilder
     func ProductCardView(product: Product)->some View{
-        VStack(spacing: 10){
+        VStack(spacing: 0){
             Image(product.productImage)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: getRect().width / 2.5, height: getRect().width / 2.5)
-            //moving image to the top
-                .offset(y: -20)
-                .padding(.bottom, -20)
+                .frame(width: getRect().width / 3.5, height: getRect().width / 3.5)
+                //moving image to the top
+                //.offset(y: -10)
+                //.padding(.bottom, -10)
             
             Text(product.title)
                 .font(.custom(customFont, size: 18))
                 .fontWeight(.semibold)
-                .padding(.top)
+                //.padding(.top,5)
             
             Text(product.subtitle)
                 .font(.custom(customFont, size: 14))
@@ -159,14 +164,22 @@ struct SearchView: View {
                 .padding(.top, 5)
                
         }
-        .padding(.horizontal,20)
+        .padding()
+        .padding(.horizontal,10)
         .padding(.bottom, 22)
+//        .background(
+//            Color.white
+//                .cornerRadius(25)
+//        )
+        //.padding(.top, 10)
+        
         .background(
-            Color.white
-                .cornerRadius(25)
-        )
-        .padding(.top, 10)
+               Color.white
+                   .cornerRadius(25)
+                   .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 4) // Add a shadow for a raised effect
+           )
     }
+    
     
 }
 

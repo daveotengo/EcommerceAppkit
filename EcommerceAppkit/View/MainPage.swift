@@ -22,6 +22,7 @@ struct MainPage: View {
             TabView(selection: $currentTab){
                 Home()
                     .tag(Tab.Home)
+
                 
                 Text("Liked")
                     .tag(Tab.Liked)
